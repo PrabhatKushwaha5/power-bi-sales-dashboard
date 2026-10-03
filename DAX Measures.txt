@@ -1,0 +1,22 @@
+DEFINE 
+ 
+    MEASURE 'Customer_Data'[Total Rows] = 
+        COUNTROWS('Customer_Data') 
+ 
+    MEASURE 'Customer_Data'[Total Sales] = 
+        SUM('Customer_Data'[Sales]) 
+ 
+    MEASURE 'Customer_Data'[Total Customers] = 
+        DISTINCTCOUNT('Customer_Data'[Customer_ID])
+
+    MEASURE 'Customer_Data'[Average Sales] =
+        AVERAGE('Customer_Data'[Sales])
+ 
+EVALUATE 
+ 
+    SUMMARIZECOLUMNS( 
+        "Total Rows", [Total Rows], 
+        "Total Sales", [Total Sales], 
+        "Total Customers", [Total Customers],
+        "Average Sales", [Average Sales]
+    )
